@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Решение частного случая уравнения переноса для случая с постоянной положительной скоростью перемещения веществ</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/style_v_2.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+</head>
+
+<body>
+    <section class="appSection">
+        Данный сервис позволяет вычислить решения уравнения переноса для
+        моделей с постоянной положительной скоростью перемещения веществ при
+        помощи метода сеток, используя вычислительну мощь Вашего устройства вне
+        зависимости от его марки и модели, что позволяет пользоваться данным
+        сервисом практически с любого устройства, имеющего браузер и подключение
+        к сети Интернет.
+    </section>
+
+    <noscript><span>На Вашем устройстве отключён JavaScript. Для нормальной работы сервиса требуется включить его.</span></noscript>
+
+    <section class="eqSection" >
+        <!-- <img src="img/equation.png" width="100%" height="100" alt="Уравнение">
+       
+        &frac du + C 	&sdot; cos(t) = 0 <br> -->
+			В НАШЕМ ЧАСТНОМ СЛУЧАЕ ЗАДАЧА ИМЕЕТ СЛЕДУЮЩИЙ ВИД: <br>
+        \[
+        \frac{\partial U}{\partial t} + C \frac{\partial U}{\partial x} = \sin(x) \cdot \cos(t),\\
+        U|_{t=0}=\cos^2(x),\\
+        U|_{x=a}=\sin^3(t)
+        \]
+
+
+    </section>
+    <section class="tableSection">
+        <form id="mainForm" name="mainForm" class="tableSection_table__container">
+            <table cellpadding="8" width="50%">
+                <tr>
+                   <td>
+                       <div class="mathSimb">a</div> =
+                       <label for="a"></label><input name="a" id="inputA" type="number" value="-5" required>
+                   </td>
+                    <td>
+                        переменная <div class="mathSimb">a</div> является крайней левой точкой промежутка [a,b] оси 0x
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">b</div> =
+                        <label for="b"></label><input name="b" id="inputB" type="number" value="5" required>
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">b</div> является крайней правой точкой промежутка [a,b] оси 0x
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">T</div> =
+                        <label for="T"></label><input name="t" id="inputT" type="number" value="10" required>
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">T</div> является крайней правой точкой промежутка [0,T] оси 0t
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">C</div> =
+                        <label for="C"></label><input name="c" id="inputC" type="number" value="0.2" required>
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">C</div> отвечает за скорость перемещения вещества
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">N</div> =
+                        <label for="N"></label><input name="n" id="inputN" type="number" value="5" required>
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">N</div> определяет количетсво точкек промежутка [a,b] оси 0x
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">M</div> =
+                        <label for="M"></label><input name="m" id="inputM" type="number" value="5" required>
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">M</div> определяет количетсво точкек промежутка [0,T] оси 0t
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="mathSimb">k</div> =
+                        <label for="k"></label><input name="k" id="inputK" type="number" value="0">
+                    </td>
+                    <td>
+                        переменная <div class="mathSimb">k</div> определяет номер слоя промежутка [0,T] оси 0t для визуализации
+                    </td>
+
+                </tr>
+                <tr class="resClass">
+                    <td colspan="2">
+
+                        <button type="button" id="clean" class="btn" title="Убрать текущие результаты вычислений">Очистить</button>
+                        <button type="button" id="animate" class="btn">График</button>
+                        <button type="button" id="downloadFile" class="btn" disabled>Скачать</button>
+                        <button type="button" id="compute" class="btn" title="Провести вычисления для текущих параметров">Вычислить</button>
+
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="chart-container" style="position: relative; display: none; width: 100%">
+                <!--<canvas id="setka"></canvas>-->
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>
+            </div>
+            <div class="chart-container" style="position: relative; display: none; width: 100%">
+               <canvas id="setka"></canvas>
+                <!--<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>-->
+           </div>
+
+           <!--<div id="container" style="min-width: 310px; height: 400px; max-width: 100%; margin: 0 auto"></div>-->
+
+
+
+            <!--<div class="chart-container" style="position: relative; display: none; width: 100%">
+                <canvas id="container"></canvas>
+            </div> тут поппытка адаптировать под сетку-->
+
+        </form>
+
+    </section>
+
+    <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="scripts/inputScript_v1.js"></script>
+
+    <script type="text/javascript" src="scripts/animate_v4.js"></script>
+
+    <script type="text/javascript" src="scripts/clearScript.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+    <script type="text/javascript" src="scripts/hightcharts.js"></script>
+    <script type="text/javascript" src="scripts/exporting.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* GLOBALS */
+* {
+    box-sizing: border-box; /* теперь свойства width и height включают в себя значения полей и границ,
+     но не отступов (margin) */
+    /*outline: 1px solid black;*/
+}
+
+body, html {
+    margin: 0; /* отступ; тут он =0 со всех сторон */
+    padding: 0; /* Устанавливает значение полей вокруг содержимого элемента. Полем называется расстояние
+                от внутреннего края рамки элемента до воображаемого прямоугольника, ограничивающего его содержимое;
+                тут поля будут установлены от каждого края элемента */
+    font-family: Arial, sans-serif;  /* этот шрифт походу есть на каждом компе */
+    font-size: 16px; /* размер шрифта */
+    line-height: 1.5; /* межстрочный интервал */
+    color: #404040; /* надо будет потом спросить, как подбирать цвет. (ну, мб из ФШ. Но как КОД цвета
+    из SMYK/RGB конвертировать в код того-же цвета для свойства color в css?) */
+    background-image: url(../img/back.png);
+    background-size: cover;
+    /*outline: none;*/
+}
+
+.tableSection_table__container {
+    /* color: none; */
+
+    /* padding-top: 70px; */ /* ------------------------- Устанавливает значение поля от верхнего края содержимого элемента.
+                                                 Полем называется расстояние от внутреннего края рамки элемента до
+                                                  воображаемого прямоугольника, ограничивающего его содержимое */
+    background-size: cover; /* ------------------- для cover: Масштабирует изображение с сохранением пропорций так,
+                                                чтобы его ширина или высота равнялась ширине или высоте блока. */
+    background: url(../img/back.png) no-repeat top center;
+    /*min-height: 767px; */
+    outline: 1px solid black;
+	/*outline: none;*/
+}
+
+table {
+
+    position: static;
+     margin-top: 1px;
+    text-align: center;
+    height: 400px;
+    width: 100%;
+    outline: 1px;
+}
+
+td, th {
+     border: 1px solid darkblue
+}
+
+form {
+    /* float: left; */
+}
+
+.container {
+    margin: 0 auto;
+    /*padding: 0 40px;*/
+    width: 1060px;
+	/*outline: none;*/
+}
+
+section {
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 1060px;
+    /*outline: none;*/
+
+}
+
+.eqSection {
+    font-size: 28px;
+    text-align: center;
+    font-family: Times New Roman, serif;
+    outline: 1px solid black;
+    /*background: url(../img/equation.png) no-repeat top center;*/
+    background-color: floralwhite;
+    margin: 0px auto;
+    padding: 10px;
+}
+
+.appSection {
+	margin-top: 1px;
+    background-color: #FDEAA8;
+    outline: 1px solid black;
+}
+
+
+.resClass {
+    background-color: #7fff00;
+}
+
+.mathSimb{
+    outline: none;
+     font-weight: bold;
+   /* color: brown; */
+    display: inline
+}
+
+.btn {
+    outline: none;
+}
+
+#setka {
+    width: 100%;
+    /*height: 500px; */
+    background-color: aquamarine;
+    /*  visibility: hidden;
+    display: none;*/
+    outline: none;
+}
+
+.resClass {
+ background-color: #7fff00;
+}
+
